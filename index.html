@@ -1,16 +1,28 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="es">
+
 <head>
   <meta charset="utf-8" />
   <title>Web Components</title>
+
   <script src="./src/subtitle.js"></script>
+  <script src="./src/todo/todo.js"></script>
+  <script src="./src/todo/item.js"></script>
+  <script src="./src/todo/input.js"></script>
 </head>
 <body>
   <div class="example">
     <h1>Hello World!</h1>
   </div>
   <subtitle-comp></subtitle-comp>
+
+  <todo-list></todo-list>
+
   <script type="text/javascript">
     const header = document.querySelector(".example");
     const shadowRoot = header.attachShadow({ mode: "open" });
     shadowRoot.innerHTML = `<h1>Hello Shadow World!</h1>`;
   </script>
 </body>
+
+</html>
