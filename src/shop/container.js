@@ -8,10 +8,7 @@ class ShopContainer extends HTMLElement {
     constructor() {
         super();
         // this.attachShadow({ 'mode': 'open' });
-        this.listItems = [
-            { description: 'Perfume', price: 5, discount: 10 },
-            { description: 'Perfume2', price: 6, discount: 15 },
-        ];
+        this.listItems = shopItemsData;
     };
 
     connectedCallback() {
@@ -31,9 +28,11 @@ class ShopContainer extends HTMLElement {
 
         this.containerElement.innerHTML = '';
         this.listItems.forEach((item, idx) => {
-            let itemElement = document.createElement('shop-info');
+            let itemElement = document.createElement('shop-item');
             itemElement.setAttribute('description', item.description);
-
+            itemElement.imgSource = item.imgSource;
+            itemElement.price = item.price;
+            itemElement.discount = item.discount;
             this.containerElement.appendChild(itemElement);
         });
     };
