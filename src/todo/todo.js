@@ -1,16 +1,25 @@
 const templateTodoList = document.createElement('template');
 templateTodoList.innerHTML = `
-    <div>
-        <h2>Todo List</h2>
-        <todo-input></todo-input>
-        <ul id="todo-list"></ul>
-    </div>
+<style>
+.todo {
+    font-family: arial;
+    margin: 25px;
+}
+todo-input {
+    width: 100%;
+}
+</style>
+<div class="todo">
+    <h2>Todo List</h2>
+    <todo-input></todo-input>
+    <ul id="todo-list"></ul>
+</div>
 `;
 
 class TodoList extends HTMLElement {
     constructor() {
         super();
-        // this.attachShadow({ 'mode': 'open' });
+        this.attachShadow({ 'mode': 'open' });
         this.listItems = [
             { text: 'Recuerda que puedes agregar items escribiendo y con enter', checked: false },
             { text: 'Aprendiendo web components', checked: true }
@@ -19,14 +28,14 @@ class TodoList extends HTMLElement {
     
     // on html mount
     connectedCallback() {
-        this.appendChild(templateTodoList.content.cloneNode(true));
+        this.shadowRoot.appendChild(templateTodoList.content.cloneNode(true));
         this.initialize();
         this._render();
     };
 
     initialize() {
-        this.inputComponent = this.querySelector('todo-input');
-        this.listComponent = this.querySelector('#todo-list');
+        this.inputComponent = this.shadowRoot.querySelector('todo-input');
+        this.listComponent = this.shadowRoot.querySelector('#todo-list');
         this.inputComponent.addEventListener('onSubmit', this.addItem.bind(this));
     };
 

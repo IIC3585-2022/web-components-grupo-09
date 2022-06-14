@@ -1,18 +1,32 @@
 const templateShopContainer = document.createElement('template');
 templateShopContainer.innerHTML = `
-    <div class="container">
-    </div>
+<style>
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    justify-items: center;
+}
+shop-item {
+    width: max-content;
+    justify-content: center;
+    display: flex;
+}
+</style>
+<div class="container">
+</div>
 `;
 
 class ShopContainer extends HTMLElement {
     constructor() {
         super();
-        // this.attachShadow({ 'mode': 'open' });
+        this.attachShadow({ 'mode': 'open' });
         this.listItems = shopItemsData;
     };
 
     connectedCallback() {
-        this.appendChild(
+        this.shadowRoot.appendChild(
             templateShopContainer.content.cloneNode(true)
         );
         this.initialize();
@@ -20,7 +34,7 @@ class ShopContainer extends HTMLElement {
     };
 
     initialize() {
-        this.containerElement = this.querySelector('.container');
+        this.containerElement = this.shadowRoot.querySelector('.container');
     };
 
     _render() {
