@@ -9,6 +9,8 @@ templateShopItem.innerHTML = `
     margin: 0;
     border-radius: 15px;
     font-family: Montserrat,sans-serif,arial,helvetica;
+    background-color: white;
+    color: black;
 }
 .data {
     margin: 15px;
