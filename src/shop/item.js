@@ -1,23 +1,58 @@
 const templateShopItem = document.createElement('template');
 templateShopItem.innerHTML = `
 <style>
-#price {
-    color: cyan;
-}
 .info {
-    width: 50%;
-    border-bottom: 1px solid black;
+    width: 300px;
+    max-height: 500px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    margin: 0;
+    border-radius: 15px;
+    font-family: Montserrat,sans-serif,arial,helvetica;
+}
+.data {
+    margin: 15px;
+}
+img {
+    max-width: 100%;  
+    height: 250px;  
+    object-fit: cover;  
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.amount-discount {
+    display: flex;
+}
+.amount-discount > #price {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: auto;
+}
+.amount-discount > .discount {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 5px;
+    color: #2f81d2;
+    background-color: #f2f7ff;
+}
+.amount {
+    margin-top: 10px;
 }
 </style>
 
 <div class="info">
-    <img></img>
-    <p id="description"></p>
-    <p id="price"></p>
-    <p class="discount"></p>
-    <div>
-        <label>Normal:</label>
-        <label class="price"></label>
+    <div class="data">
+        <img></img>
+        <p class="description"></p>
+        <div class="amount-discount">
+            <p class="discount"></p>
+            <p id="price"></p>
+        </div>
+        <div class="amount">
+            <label>Normal:</label>
+            <label class="price"></label>
+        </div>
     </div>
 </div>
 `;
@@ -42,7 +77,7 @@ class ShopItem extends HTMLElement {
         // Add shadow root for style only on the component
         this.imgElement = this.shadowRoot.querySelector('img');
         this.infoElement = this.shadowRoot.querySelector('.info');
-        this.descriptionElement = this.shadowRoot.querySelector('#description');
+        this.descriptionElement = this.shadowRoot.querySelector('.description');
         this.priceElement = this.shadowRoot.querySelector('#price');
         this.discountElement = this.shadowRoot.querySelector('.discount');
         this.normalPriceElement = this.shadowRoot.querySelector('.price');
@@ -91,11 +126,11 @@ class ShopItem extends HTMLElement {
     _render() {
         if (!this.infoElement) return;
         this.descriptionElement.textContent = this.descriptionValue;
-        this.priceElement.textContent = Math.round(
+        this.priceElement.textContent = `$${Math.round(
             this.priceValue * (1 - this.discountValue / 100)
-        );
+        )}`;
         this.discountElement.textContent = `${this.discountValue}%`;
-        this.normalPriceElement.textContent = this.priceValue;
+        this.normalPriceElement.textContent = `$${this.priceValue}`;
         this.imgElement.setAttribute('src', this.imgSourceValue)
     };
 };
