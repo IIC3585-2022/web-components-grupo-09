@@ -1,28 +1,19 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Web Components</title>
 
-<head>
-  <meta charset="utf-8" />
-  <title>Web Components</title>
+    <script src="./src/todo/todo.js"></script>
+    <script src="./src/todo/item.js"></script>
+    <script src="./src/todo/input.js"></script>
+    <script src="./src/shop/shopItemsData.js"></script>
+    <script src="./src/shop/container.js"></script>
+    <script src="./src/shop/item.js"></script>
+  </head>
+  <body>
+    <todo-list></todo-list>
 
-  <script src="./src/todo/todo.js"></script>
-  <script src="./src/todo/item.js"></script>
-  <script src="./src/todo/input.js"></script>
-  <script src="./src/shop/shopItemsData.js"></script>
-  <script src="./src/shop/container.js"></script>
-  <script src="./src/shop/item.js"></script>
-</head>
-<body>
-
-  <todo-list></todo-list>
-
-  <shop-container></shop-container>
-
-  <script type="text/javascript">
-    const header = document.querySelector(".example");
-    const shadowRoot = header.attachShadow({ mode: "open" });
-    shadowRoot.innerHTML = `<h1>Hello Shadow World!</h1>`;
-  </script>
-</body>
-
+    <shop-container></shop-container>
+  </body>
 </html>
