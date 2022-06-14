@@ -1,4 +1,4 @@
-const templateShopItem = document.createElement('template');
+export const templateShopItem = document.createElement('template');
 templateShopItem.innerHTML = `
 <style>
 #price {
