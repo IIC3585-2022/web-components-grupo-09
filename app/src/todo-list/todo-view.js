@@ -9,6 +9,9 @@ const VisibilityFilters = {
 class TodoView extends LitElement{
     static get properties(){
         return{
+            item1: {type: String},
+            item2: {type: String},
+            item3: {type: String},
             todos: {type: Array},
             filter: { type: String},
             value: {type: String}
@@ -16,7 +19,23 @@ class TodoView extends LitElement{
     }
     constructor(){
         super();
-        this.todos = [];
+        this.item1= this.getAttribute("item1");
+        this.item2= this.getAttribute("item2");
+        this.item3= this.getAttribute("item3");
+        this.todos = [{
+            task : this.item1,
+            complete: false,
+            id: 0,
+        },
+        { task : this.item2,
+            complete: false,
+            id: 1},
+            
+        {
+            task : this.item3,
+            complete: false,
+            id: 2
+        }];
         this.filter = VisibilityFilters.SHOW_ALL;
         this.value = '';
     }
@@ -40,7 +59,7 @@ class TodoView extends LitElement{
            <div class= "todos-list">
 
                 ${this.applyFilter(this.todos).map(todo =>html` 
-                    <divclass="todo-item">
+                    <div class="todo-item">
                         <input
                             type="checkbox"
                             ?checked="${todo.complete}"
@@ -56,6 +75,7 @@ class TodoView extends LitElement{
                          </button> 
                     </div>
                 `)}
+            </div>
            <form 
            class= radio-group 
            >
@@ -87,8 +107,6 @@ class TodoView extends LitElement{
                 return todos;
         }
     }
-
-    
    remove(e){
        e.preventDefault();
        this.todos = this.todos.filter(item => item.id !=e.target.id)
@@ -105,10 +123,7 @@ class TodoView extends LitElement{
                 complete: false,
                 id: this.todos.length -1,
             }];
-            this.value = '';
-            
-          
-            
+            this.value = '';       
         }
     }
     updateTodoStatus(updatedTodo, complete){
