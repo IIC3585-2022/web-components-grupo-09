@@ -9,10 +9,17 @@ templateTodoList.innerHTML = `
     text-align: center;
     border-radius: 10px;
     padding: 1rem;
+    transition: box-shadow .3s;
+}
+.todo:hover {
+    box-shadow: 0 0 15px rgba(33,33,33,.5);
 }
 todo-input {
     width: 100%;
 }
+ul {
+    list-style-type: none;
+}  
 </style>
 <div class="todo">
     <h2>Todo List</h2>

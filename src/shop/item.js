@@ -5,12 +5,15 @@ templateShopItem.innerHTML = `
     width: 300px;
     max-height: 500px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
+    transition: box-shadow .3s;
     margin: 0;
     border-radius: 15px;
     font-family: Montserrat,sans-serif,arial,helvetica;
     background-color: white;
     color: black;
+}
+.info:hover {
+  box-shadow: 0 0 15px rgba(33,33,33,.5);
 }
 .data {
     margin: 15px;
