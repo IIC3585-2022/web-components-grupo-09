@@ -32,6 +32,7 @@ class ShopItem extends LitElement {
                 display: flex;
                 flex-direction: column;
                 border-radius: 15px;
+                border: 0.5px solid gray;
                 transition: box-shadow 0.3s;
                 width: 300px;
                 height: 600px;

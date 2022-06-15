@@ -8,6 +8,7 @@ templateTodoList.innerHTML = `
     color: black;
     text-align: center;
     border-radius: 10px;
+    border: 0.5px solid gray;
     padding: 1rem;
     transition: box-shadow .3s;
 }

@@ -8,6 +8,7 @@ templateShopItem.innerHTML = `
     transition: box-shadow .3s;
     margin: 0;
     border-radius: 15px;
+    border: 0.5px solid gray;
     font-family: Montserrat,sans-serif,arial,helvetica;
     background-color: white;
     color: black;

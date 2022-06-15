@@ -1,4 +1,4 @@
-const templateTodoInput = document.createElement('template');
+const templateTodoInput = document.createElement("template");
 templateTodoInput.innerHTML = `
 <style>
 .todo-form {
@@ -18,34 +18,30 @@ templateTodoInput.innerHTML = `
         placeholder="Agregar a la lista"
     >
 </form>
-`
+`;
 
 class TodoInput extends HTMLElement {
-    constructor() {
-        super();
-        this.attachShadow({ 'mode': 'open' });
-    };
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+  }
 
-    connectedCallback() {
-        this.shadowRoot.appendChild(templateTodoInput.content.cloneNode(true));
-        this.formElement = this.shadowRoot.querySelector('#todo-form');
-        this.inputElement = this.shadowRoot.querySelector('#todo-input');
-        this.formElement.addEventListener(
-            'submit',
-            this.submitHandler.bind(this)
-        );
-    };
+  connectedCallback() {
+    this.shadowRoot.appendChild(templateTodoInput.content.cloneNode(true));
+    this.formElement = this.shadowRoot.querySelector("#todo-form");
+    this.inputElement = this.shadowRoot.querySelector("#todo-input");
+    this.formElement.addEventListener("submit", this.submitHandler.bind(this));
+  }
 
-    submitHandler(e){
-        e.preventDefault();
-        if (this.inputElement.value){
-            this.dispatchEvent(new CustomEvent(
-                'onSubmit',
-                { detail: this.inputElement.value }
-            ));
-            this.inputElement.value = '';
-        };
-    };
-};
+  submitHandler(e) {
+    e.preventDefault();
+    if (this.inputElement.value) {
+      this.dispatchEvent(
+        new CustomEvent("onSubmit", { detail: this.inputElement.value })
+      );
+      this.inputElement.value = "";
+    }
+  }
+}
 
-window.customElements.define('todo-input', TodoInput);
+window.customElements.define("todo-input", TodoInput);
